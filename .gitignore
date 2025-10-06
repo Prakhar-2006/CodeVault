@@ -1,0 +1,13 @@
+# Node
+node_modules/
+
+# Python
+__pycache__/
+*.pyc
+
+# Java
+*.class
+
+# build artifacts
+dist/
+build/

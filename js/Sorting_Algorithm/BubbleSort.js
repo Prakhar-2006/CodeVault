@@ -1,5 +1,6 @@
 // Bubble Sort Algorithm
 // Given an array of integers, this program sorts them in ascending order
+// Author: Claygro
 // by repeatedly comparing adjacent elements and swapping them if they are in the wrong order.
 
 let arr = [1, 10, 5, 4, 2, 3, 2];

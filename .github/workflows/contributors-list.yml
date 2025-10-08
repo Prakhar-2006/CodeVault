@@ -3,13 +3,20 @@ name: Update Contributors
 on:
   push:
     branches:
-      - main 
+      - main
+
+permissions:
+  contents: write  
+
 jobs:
   update-contributors:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}  
 
       - name: Fetch contributors list
         run: |
@@ -17,11 +24,14 @@ jobs:
           | jq -r '.[] | "- [\(.login)](\(.html_url))"' > CONTRIBUTORS.md
 
       - name: Commit and push if changed
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          if [[ `git status --porcelain` ]]; then
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          if ! git diff --quiet CONTRIBUTORS.md; then
             git add CONTRIBUTORS.md
             git commit -m "Update contributors [skip ci]"
-            git push
+            git push https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }} HEAD:${{ github.ref }}
           fi

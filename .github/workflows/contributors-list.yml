@@ -1,0 +1,27 @@
+name: Update Contributors
+
+on:
+  push:
+    branches:
+      - main 
+jobs:
+  update-contributors:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Fetch contributors list
+        run: |
+          curl -s "https://api.github.com/repos/${{ github.repository }}/contributors?per_page=100" \
+          | jq -r '.[] | "- [\(.login)](\(.html_url))"' > CONTRIBUTORS.md
+
+      - name: Commit and push if changed
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          if [[ `git status --porcelain` ]]; then
+            git add CONTRIBUTORS.md
+            git commit -m "Update contributors [skip ci]"
+            git push
+          fi

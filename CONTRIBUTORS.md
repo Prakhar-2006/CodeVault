@@ -1,3 +1,4 @@
-Thanks for contributing! Add your name here after your first merged PR.
-
-- Contributor list will grow as PRs are merged.
+- [devsdenepal](https://github.com/devsdenepal)
+- [Xtha-Sunil](https://github.com/Xtha-Sunil)
+- [sabin-khatri](https://github.com/sabin-khatri)
+- [claygro](https://github.com/claygro)

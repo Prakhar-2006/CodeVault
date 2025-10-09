@@ -1,4 +1,7 @@
 # Hacktoberfest — First-time Contributors
+<img width="1281" height="161" alt="HF-Horizontal-Monochrome-Dark" src="https://github.com/user-attachments/assets/2df0de55-5915-4a79-8214-ae23f14353c6" />
+
+<br/>
 
 Welcome! This repository is designed for first-time contributors to Hacktoberfest. The idea: push your own small code examples in your preferred language under the language folder.
 

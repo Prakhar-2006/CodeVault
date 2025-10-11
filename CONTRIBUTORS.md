@@ -1,5 +1,5 @@
 - [devsdenepal](https://github.com/devsdenepal)
 - [sabin-khatri](https://github.com/sabin-khatri)
 - [Xtha-Sunil](https://github.com/Xtha-Sunil)
-- [claygro](https://github.com/claygro)
 - [github-actions[bot]](https://github.com/apps/github-actions)
+- [claygro](https://github.com/claygro)

@@ -1,0 +1,454 @@
+<!-- This code was developed for #Hacktoberfest2025. It is completely open-source and free to use — anyone is welcome to use, modify, and share it.<!DOCTYPE html> -->
+<!-- #Hacktoberfest2025 #github #opensourcecontribution  -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASCII Art Generator For Hactober Fest</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Courier New', monospace;
+        }
+        
+        body {
+            background-color: #1a1a2e;
+            color: #e6e6e6;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, #16213e, #0f3460);
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: #e94560;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: #8fbbaf;
+        }
+        
+        .app-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .controls {
+            flex: 1;
+            min-width: 300px;
+            background: #16213e;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .control-group {
+            margin-bottom: 20px;
+        }
+        
+        h2 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: #e94560;
+            border-bottom: 2px solid #0f3460;
+            padding-bottom: 5px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #8fbbaf;
+        }
+        
+        input[type="range"] {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        
+        .range-value {
+            display: inline-block;
+            width: 40px;
+            text-align: center;
+            background: #0f3460;
+            padding: 2px 5px;
+            border-radius: 4px;
+        }
+        
+        select, button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            background: #0f3460;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        select:hover, button:hover {
+            background: #133b6e;
+        }
+        
+        button {
+            background: #e94560;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+        
+        button:hover {
+            background: #f15b75;
+        }
+        
+        .output {
+            flex: 2;
+            min-width: 500px;
+            background: #16213e;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            overflow: auto;
+        }
+        
+        #asciiArt {
+            white-space: pre;
+            font-size: 8px;
+            line-height: 1;
+            background: black;
+            padding: 10px;
+            border-radius: 5px;
+            max-height: 600px;
+            overflow: auto;
+            text-align: center;
+        }
+        
+        .image-preview {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        #preview {
+            max-width: 100%;
+            max-height: 200px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        
+        .instructions {
+            background: #16213e;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .instructions h2 {
+            color: #8fbbaf;
+        }
+        
+        .instructions ol {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+        
+        .instructions li {
+            margin-bottom: 10px;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            color: #8fbbaf;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .app-container {
+                flex-direction: column;
+            }
+            
+            .controls, .output {
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>ASCII Art Generator #Hacktoberfest2025 </h1>
+            <p class="subtitle">Convert your images to ASCII art with customizable options Developed Just For #Hacktoberfest2025</p>
+        </header>
+        
+        <div class="app-container">
+            <div class="controls">
+                <div class="control-group">
+                    <h2>Image Input</h2>
+                    <input type="file" id="imageInput" accept="image/*">
+                    <div class="image-preview">
+                        <img id="preview" src="" alt="Image preview" style="display: none;">
+                    </div>
+                </div>
+                
+                <div class="control-group">
+                    <h2>Size Settings</h2>
+                    <label for="widthRange">Width: <span id="widthValue" class="range-value">80</span> characters</label>
+                    <input type="range" id="widthRange" min="20" max="200" value="80">
+                    
+                    <label for="fontSize">Font Size: <span id="fontSizeValue" class="range-value">8</span>px</label>
+                    <input type="range" id="fontSize" min="4" max="16" value="8" step="0.5">
+                </div>
+                
+                <div class="control-group">
+                    <h2>Character Set</h2>
+                    <label for="charSet">Select Character Set:</label>
+                    <select id="charSet">
+                        <option value="standard">Standard (@%#*+=-:. )</option>
+                        <option value="blocks">Blocks (█▓▒░ )</option>
+                        <option value="detailed">Detailed ($@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\|()1{}[]?-_+~<>i!lI;:,"^`'. )</option>
+                        <option value="simple">Simple (@#=-. )</option>
+                        <option value="binary">Binary (01)</option>
+                    </select>
+                </div>
+                
+                <div class="control-group">
+                    <h2>Color Options</h2>
+                    <label for="colorMode">Color Mode:</label>
+                    <select id="colorMode">
+                        <option value="monochrome">Monochrome</option>
+                        <option value="grayscale">Grayscale</option>
+                        <option value="color">Color (from original image)</option>
+                    </select>
+                    
+                    <label for="invertColors">
+                        <input type="checkbox" id="invertColors">
+                        Invert Colors
+                    </label>
+                </div>
+                
+                <button id="generateBtn">Generate ASCII Art</button>
+                <button id="downloadBtn">Download as Text</button>
+            </div>
+            
+            <div class="output">
+                <h2>ASCII Art Output</h2>
+                <div id="asciiArt">Your ASCII art will appear here...</div>
+            </div>
+        </div>
+        
+        <div class="instructions">
+            <h2>How to Use my tool</h2>
+            <ol>
+                <li>Upload an image using the file input</li>
+                <li>Adjust the width to control the size of the ASCII art (more characters = more detail)</li>
+                <li>Select a character set that matches the style you want</li>
+                <li>Choose color options (monochrome, grayscale, or color)</li>
+                <li>Click "Generate ASCII Art" to convert your image</li>
+                <li>Use "Download as Text" to save your creation</li>
+            </ol>
+        </div>
+        
+        <footer>
+            <p>ASCII Art Generator &copy; 2025 | Created with HTML, CSS, and JavaScript Just For #Hacktoberfest2025</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // DOM Elements
+            const imageInput = document.getElementById('imageInput');
+            const preview = document.getElementById('preview');
+            const widthRange = document.getElementById('widthRange');
+            const widthValue = document.getElementById('widthValue');
+            const fontSize = document.getElementById('fontSize');
+            const fontSizeValue = document.getElementById('fontSizeValue');
+            const charSet = document.getElementById('charSet');
+            const colorMode = document.getElementById('colorMode');
+            const invertColors = document.getElementById('invertColors');
+            const generateBtn = document.getElementById('generateBtn');
+            const downloadBtn = document.getElementById('downloadBtn');
+            const asciiArt = document.getElementById('asciiArt');
+            
+            // Character sets
+            const charSets = {
+                standard: '@%#*+=-:. ',
+                blocks: '█▓▒░ ',
+                detailed: '$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\\|()1{}[]?-_+~<>i!lI;:,"^`\'. ',
+                simple: '@#=-. ',
+                binary: '01'
+            };
+            
+            // Update range values display
+            widthRange.addEventListener('input', function() {
+                widthValue.textContent = this.value;
+            });
+            
+            fontSize.addEventListener('input', function() {
+                fontSizeValue.textContent = this.value;
+            });
+            
+            // Preview uploaded image
+            imageInput.addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(event) {
+                        preview.src = event.target.result;
+                        preview.style.display = 'block';
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+            
+            // Generate ASCII art
+            generateBtn.addEventListener('click', function() {
+                if (!preview.src || preview.src === window.location.href) {
+                    alert('Please upload an image first!');
+                    return;
+                }
+                
+                const width = parseInt(widthRange.value);
+                const selectedCharSet = charSets[charSet.value];
+                const isInverted = invertColors.checked;
+                const colorModeValue = colorMode.value;
+                
+                generateAsciiArt(preview, width, selectedCharSet, colorModeValue, isInverted);
+                
+                // Update font size
+                asciiArt.style.fontSize = fontSize.value + 'px';
+            });
+            
+            // Download ASCII art as text file
+            downloadBtn.addEventListener('click', function() {
+                const text = asciiArt.textContent;
+                if (!text || text === 'Your ASCII art will appear here...') {
+                    alert('No ASCII art to download!');
+                    return;
+                }
+                
+                const blob = new Blob([text], { type: 'text/plain' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'ascii-art.txt';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            });
+            
+            // Main ASCII art generation function
+            function generateAsciiArt(image, width, chars, colorMode, invert) {
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+                
+                // Calculate height to maintain aspect ratio
+                const aspectRatio = image.height / image.width;
+                const height = Math.floor(width * aspectRatio * 0.5); // Adjust for character aspect ratio
+                
+                canvas.width = width;
+                canvas.height = height;
+                
+                // Draw image to canvas
+                ctx.drawImage(image, 0, 0, width, height);
+                
+                // Get image data
+                const imageData = ctx.getImageData(0, 0, width, height);
+                const data = imageData.data;
+                
+                let ascii = '';
+                
+                // Generate ASCII art
+                for (let y = 0; y < height; y++) {
+                    for (let x = 0; x < width; x++) {
+                        const index = (y * width + x) * 4;
+                        const r = data[index];
+                        const g = data[index + 1];
+                        const b = data[index + 2];
+                        const a = data[index + 3];
+                        
+                        // Calculate brightness (using luminance formula)
+                        let brightness = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+                        
+                        // Invert if needed
+                        if (invert) brightness = 1 - brightness;
+                        
+                        // Map brightness to character
+                        const charIndex = Math.floor(brightness * (chars.length - 1));
+                        const char = chars[charIndex];
+                        
+                        // Apply color based on mode
+                        if (colorMode === 'color' && a > 0) {
+                            ascii += `<span style="color: rgb(${r}, ${g}, ${b})">${char}</span>`;
+                        } else if (colorMode === 'grayscale') {
+                            const gray = Math.floor(brightness * 255);
+                            ascii += `<span style="color: rgb(${gray}, ${gray}, ${gray})">${char}</span>`;
+                        } else {
+                            ascii += char;
+                        }
+                    }
+                    ascii += '\n';
+                }
+                
+                // Display the ASCII art
+                asciiArt.innerHTML = ascii;
+            }
+            
+            // Generate sample ASCII art on load
+            setTimeout(() => {
+                // Create a simple sample image programmatically
+                const sampleCanvas = document.createElement('canvas');
+                sampleCanvas.width = 100;
+                sampleCanvas.height = 100;
+                const sampleCtx = sampleCanvas.getContext('2d');
+                
+                // Draw a gradient
+                const gradient = sampleCtx.createLinearGradient(0, 0, 100, 100);
+                gradient.addColorStop(0, '#e94560');
+                gradient.addColorStop(0.5, '#0f3460');
+                gradient.addColorStop(1, '#8fbbaf');
+                
+                sampleCtx.fillStyle = gradient;
+                sampleCtx.fillRect(0, 0, 100, 100);
+                
+                // Draw a circle
+                sampleCtx.beginPath();
+                sampleCtx.arc(50, 50, 40, 0, Math.PI * 2);
+                sampleCtx.strokeStyle = '#ffffff';
+                sampleCtx.lineWidth = 5;
+                sampleCtx.stroke();
+                
+                // Convert to data URL and set as preview
+                preview.src = sampleCanvas.toDataURL();
+                preview.style.display = 'block';
+                
+                // Generate ASCII art from sample
+                generateAsciiArt(preview, 60, charSets.standard, 'monochrome', false);
+                asciiArt.style.fontSize = '8px';
+            }, 500);
+        });
+    </script>
+</body>
+</html>

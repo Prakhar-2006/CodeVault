@@ -2,4 +2,5 @@
 - [sabin-khatri](https://github.com/sabin-khatri)
 - [github-actions[bot]](https://github.com/apps/github-actions)
 - [Xtha-Sunil](https://github.com/Xtha-Sunil)
+- [GajendraAwasthi](https://github.com/GajendraAwasthi)
 - [claygro](https://github.com/claygro)

@@ -70,3 +70,18 @@ Each note is an object similar to:
   "updatedAt": "2025-10-17T00:00:00.000Z"
 }
 ```
+
+## Design & Assets
+
+The project includes design images and a Figma design link used for the UI. Images are stored in the `images/` folder inside this project.
+
+Figma design (open in browser):
+
+https://www.figma.com/design/T7iIAV7ftXjmAkJfSrsrGY/Untitled?node-id=17-28&t=BHODgnHo9nia3ETR-1
+
+Project images (examples):
+
+![Desktop design](images/desktop-design.png)
+
+![Mobile design](images/mobile-design.png)
+

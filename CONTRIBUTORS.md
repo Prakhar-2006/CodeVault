@@ -1,6 +1,6 @@
 - [devsdenepal](https://github.com/devsdenepal)
 - [sabin-khatri](https://github.com/sabin-khatri)
 - [github-actions[bot]](https://github.com/apps/github-actions)
-- [Xtha-Sunil](https://github.com/Xtha-Sunil)
 - [GajendraAwasthi](https://github.com/GajendraAwasthi)
+- [Xtha-Sunil](https://github.com/Xtha-Sunil)
 - [claygro](https://github.com/claygro)

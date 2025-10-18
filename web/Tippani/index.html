@@ -1,0 +1,67 @@
+<!--
+  Tippani - Simple Note-Taking Web App
+  Author: Prithivi Pemi Magar
+  Description: A small web project for Hacktoberfest that lets users write and save notes temporarily in the browser.
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tippani - Note Taking Web App</title>
+</head>
+
+<body>
+    <main>
+        <header>
+            <h1 class="header__title">Tippani</h1>
+        </header>
+
+        <section class="note__container">
+            <form class="form">
+                <div class="note__title">
+                    <label for="note-title">Note Title</label>
+                    <input type="text" id="note-title" name="note-title" placeholder="Note Title" required>
+                </div>
+                <div class="note__content">
+                    <label for="note-content">Note Content</label>
+                    <textarea id="note-content" name="note-content" rows="10" placeholder="Start writing your note ..."
+                        required></textarea>
+                </div>
+                <div class="submit__button">
+                    <button class="button" type="submit">
+                        <div>
+                            <img src="./svg/add.svg" alt="Add Notes Icon">
+                            <p>Add Notes</p>
+                        </div>
+                    </button>
+                </div>
+            </form>
+        </section>
+        <div class="note__search">
+            <img src="./svg/search.svg" alt="Search Icon">
+            <input type="text" id="note-search" placeholder="Search notes...">
+        </div>
+
+        <section class="note__list">
+            <h2>All Notes</h2>
+            <div class="notes__container">
+                <div class="note__cards">
+                    <!-- Notes will be dynamically added here -->
+                </div>
+        </section>
+
+    </main>
+
+
+    <script src="./script.js"></script>
+</body>
+
+</html>

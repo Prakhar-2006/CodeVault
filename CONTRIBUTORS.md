@@ -4,4 +4,3 @@
 - [GajendraAwasthi](https://github.com/GajendraAwasthi)
 - [Xtha-Sunil](https://github.com/Xtha-Sunil)
 - [claygro](https://github.com/claygro)
-- [rishabh3562](https://github.com/rishabh3562)

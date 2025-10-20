@@ -1,36 +1,65 @@
-### Banking Management System
-Table of Contents
+# Banking Management System
 
-Introduction
-Project Description
-Class Descriptions
-Main Menu Options
-How to Use
-Authors
-License
+A simple C++ console application that demonstrates basic banking operations: creating accounts, depositing and withdrawing funds, checking balances, listing account holders, updating and closing accounts.
 
+## Table of Contents
+- Introduction
+- Features
+- Requirements
+- Build & Run (Windows)
+- Usage
+- Contributing
+- Authors
+- License
 
-Introduction:
-This C++ Banking Management System is a simple project designed to demonstrate the basic functionalities of a banking system. It allows users to create accounts, deposit and withdraw funds, view account details, and more.
+## Introduction
+This project is a learning example of a banking management system implemented in C++. It models account operations and a simple menu-driven interface.
 
-Project Description:
-The project consists of a C++ program that manages bank accounts. It includes the following components:
+## Features
+- Create new accounts
+- Deposit funds
+- Withdraw funds
+- Balance enquiry
+- List all account holders
+- Update account information
+- Close accounts
+- Simple file-based persistence (if implemented in the project)
 
-Class Descriptions:
-account: This class represents a bank account and includes member functions for account creation, deposit, withdrawal, displaying account details, updating account information, and more.
+## Requirements
+- A C++ compiler (g++ from MinGW, MSVC, or clang)
+- Windows 10/11 (development instructions below assume Windows CLI)
 
-Main Menu Options:
-The main menu provides the following options for users:
+## Build & Run (Windows)
+Using g++ (MinGW):
+```bat
+g++ -std=c++17 -o banking main.cpp account.cpp   :: adjust filenames as needed
+.\banking.exe
+```
 
-New Account:             Create a new bank account.
-Deposit Amount:          Deposit funds into an existing account.
-Withdraw Amount:         Withdraw funds from an existing account.
-Balance Enquiry:         View the balance of an account.
-All Account Holder List: Display a list of all account holders.
-Close an Account:        Close an existing account.
-Update an Account:       Update the information of an existing account.
-Exit:                    Quit the program.
+Using Visual Studio Developer Command Prompt (MSVC):
+```bat
+cl /EHsc main.cpp account.cpp   :: adjust filenames as needed
+main.exe
+```
 
-Authors:
-Upendra Raj Joshi
-Aagaman KC
+If the project has a provided Makefile or VS solution, prefer those.
+
+## Usage
+Run the compiled executable. Use the menu to:
+- Create account: provide name, account type, initial deposit.
+- Deposit/Withdraw: enter account number and amount.
+- Balance Enquiry: view current balance.
+- List All: show all stored accounts.
+- Update/Close: modify or remove an account.
+- Exit: quit the program (ensure data is saved if persistence is implemented).
+
+## Contributing
+- Fork the repository.
+- Create a feature branch: git checkout -b feature/your-feature
+- Commit changes and open a pull request.
+- Keep changes focused and add tests where applicable.
+
+## Authors
+- Upendra Raj Joshi
+- Aagaman KC
+

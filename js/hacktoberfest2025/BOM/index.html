@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sabin BOM Demo</title>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    button { margin: 10px; padding: 10px 20px; font-size: 16px; }
+  </style>
+</head>
+<body>
+  <h1>Sabin's BOM Playground</h1>
+  <button onclick="sabinBOM.showScreen()">Show Screen Info</button>
+  <button onclick="sabinBOM.showBrowser()">Show Browser Info</button>
+  <button onclick="sabinBOM.openTab()">Open GitHub</button>
+  <button onclick="sabinBOM.showPopup()">Sabin Popup</button>
+  <button onclick="history.back()">Go Back</button>
+
+  <pre id="output"></pre>
+
+  <script src="bom-example.js"></script>
+  <script>
+    // Add output display
+    const output = document.getElementById('output');
+    sabinBOM.showScreen = function() {
+      output.textContent = JSON.stringify(this.getScreenInfo(), null, 2);
+    };
+    sabinBOM.showBrowser = function() {
+      output.textContent = JSON.stringify(this.getBrowserInfo(), null, 2);
+    };
+    sabinBOM.openTab = function() {
+      this.openSabinTab();
+    };
+    sabinBOM.showPopup = function() {
+      this.showSabinPopup();
+    };
+  </script>
+</body>
+</html>
